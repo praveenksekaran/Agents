@@ -26,3 +26,5 @@ Start here: https://lnkd.in/g8jBUVKn
  You can’t improve what you don’t measure. Set up tracing for your agents. Choose 3-5 metrics you care about. Build an LLM as a judge. And continuously improve. 
 Start here: https://lnkd.in/g8SmDsZH
 
+- (Prod Ready Agents)[https://github.com/NirDiamant/agents-towards-production]
+
