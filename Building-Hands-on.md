@@ -27,7 +27,7 @@ It creates ready-to-post drafts, bundles trend insights and a feedback loop that
 - Use lovable to connect with Supabase for data
 - check the code to Git
 
-### Calude code for back end 
+#### Calude code for back end 
 - connect Claude code with Git
 - Prompt Claude code for API specs for every operation (auto identifies with code and supabase)
 - prompt Claude code to build the API connected with frontend
