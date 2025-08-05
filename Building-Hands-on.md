@@ -23,6 +23,16 @@ It creates ready-to-post drafts, bundles trend insights and a feedback loop that
 - (Style & format) writter LLM (send the Report/Summary) --> First draft --> Human review --> Post on twitter/Linkedin --> Post fetch analytics (likes, impressions, comments, shares) 
 - Augumented LLM (Post analytics) --> writter LLM (for changes)
 
+#### Lovable to build UI
+- Use lovable to connect with Supabase for data
+- check the code to Git
+
+### Calude code for back end 
+- connect Claude code with Git
+- Prompt Claude code for API specs for every operation (auto identifies with code and supabase)
+- prompt Claude code to build the API connected with frontend
+- 
+
 #### Sources
 web scraper (twitter/Insta): Apify.com or firecrawl.dev or selinium web crawler
 
