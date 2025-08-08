@@ -12,9 +12,9 @@ Study of Agents
 
 [RAG Agents](https://www.youtube.com/watch?v=kPL-6-9MVyA)
 
-[AI Agent Components and Design Patterns](PDF)
+[AI Agent Components and Design Patterns](https://github.com/praveenksekaran/Agents/blob/main/Docs/AI%20Agent%20Components%20and%20Design%20Patters.pdf)
 
-[Understanding Multi-Agent Systems](PDF)
+[Understanding Multi-Agent Systems](https://github.com/praveenksekaran/Agents/blob/main/Docs/Understanding%20Multi-Agent%20System.pdf)
 
 
 #### How to build a software Agents 
