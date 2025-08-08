@@ -1,6 +1,22 @@
 # Agents
 Study of Agents 
 
+# 100x links
+[Memory](https://100xengineers.notion.site/Memory-An-Essential-Component-of-your-AI-agents-23b6a63169038017a479c7679139d94f)
+
+[Anthropic Multi-Agent](https://www.anthropic.com/engineering/multi-agent-research-system)
+
+[Agents](https://www.youtube.com/watch?v=D7_ipDqhtwk)
+
+[Voice Agents](https://www.youtube.com/watch?v=iXhba366fQc)
+
+[RAG Agents](https://www.youtube.com/watch?v=kPL-6-9MVyA)
+
+[AI Agent Components and Design Patterns](PDF)
+
+[Understanding Multi-Agent Systems](PDF)
+
+
 #### How to build a software Agents 
 [12-factor-agents](https://github.com/humanlayer/12-factor-agents)
 
