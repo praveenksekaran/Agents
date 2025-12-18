@@ -77,12 +77,6 @@ This layer uses AI models to evaluate inputs, outputs, or internal reasoning for
     - Specialized guard models (classifiers): Smaller AI models trained to function as security analysts, examining inputs or outputs for subtle signs of attack that static rules might miss.
   - Benefit: Handles dynamic and novel malicious patterns, increasing the attacker's difficulty and cost. 
 
-This layer uses dependable security mechanisms, providing runtime policy enforcement that operates outside the AI model's reasoning.  
-
-- **Function:** Intercepts agent actions (tool use) before execution.  
-- **Action:** Evaluates the request against predefined, auditable rules (e.g., "Block any purchase action over $500," or "Require user confirmation for high-risk actions").  
-- **Benefit:** Provides reliable, predictable hard limits and confines the potential impact of an agent malfunction.  
-
 This hybrid, layered approach creates robust boundaries, mitigating the risk of harmful outcomes while preserving the agent's utility.  
 
 ## Securing AI applications with Model Armor
@@ -136,3 +130,128 @@ You can use existing tooling for safety filtering. The Gemini API, for example, 
 
 **How Model Armor mitigates this risk:** Model Armor serves as another layer of defense to filter content against safety categories, such as dangerous content, ensuring responsible AI outputs.  
 Model Armor leverages a pre-trained safety classifier which analyzes the semantic meaning and context of both the prompt and the response against a configurable set of safety categories and thresholds. If a response from the model exceeds the risk threshold for a given category, Model Armor automatically blocks the response or returns a customized safety message.  
+
+
+# Authentication and authorization for AI Agents
+
+Imagine your AI Agent is a new employee. Before they can start working (e.g., retrieving data, calling an external API, or saving a file), they need proper credentials and permissions. If you give them too much access, it creates a security risk. If you give them too little, they can't do their job.  
+
+This lesson explores verifying credentials and managing permissions for AI Agents in Google Cloud to control what they can and cannot do after deployment.  
+
+## Authentication vs. authorization
+
+The security of AI Agents in Google Cloud relies on a dual-faceted access control system, and every access request made by your agent involves these two distinct security steps:  
+
+1. **Authentication (AuthN):** Who are you? This is the process of verifying the agent's identity using its credentials (the Service Account, API Key, or OAuth ID). Once verified, the agent is considered a known "Principal."  
+
+2. **Authorization (AuthZ):** What are you allowed to do? This is the process of checking the permissions (Roles) granted to that Principal. IAM determines if the verified agent is authorized to perform the requested action (e.g., storage.objects.get).  
+
+Put simply, authentication gets the agent's foot in the door, but authorization then tells the agent what rooms it can enter.  
+
+## Service accounts
+
+Authorization for Google Cloud is primarily handled by Identity and Access Management (IAM). IAM offers granular control by principal and by resource. When an agent is deployed via the Vertex AI Agent Engine, it needs a core identity (the principal) that Google Cloud can track and grant roles to. A deployed agent runs using either a default or custom service account.  
+
+The default identity is called AI Platform Reasoning Engine Service Agent and it is a Google-managed service account automatically created for your project. It is automatically assigned the roles/aiplatform.reasoningEngineServiceAgent role, which contains the standard permissions necessary for basic agent operation.  
+
+You can also choose to deploy an agent with a custom service account that you created and manage. A custom account allows for much tighter control using the principle of least privilege. You only grant the specific roles that your agent needs, reducing the attack surface.  
+
+## Authentication methods
+
+AI Agents often need to access different resources, which may require different methods of authentication.  
+
+| Authentication method | Use case | Description |
+|---|---|---|
+| **Service account** | Accessing Google Cloud resources (e.g., Cloud Storage, BigQuery, other Vertex AI services). | The deployed agent's core service account identity is used. The account must have the necessary IAM roles granted at the project or resource level. |
+| **API keys** | Sending requests to external endpoints like APIs. | Used when the external service requires an API key, which must be secured, often via Secret Manager. |
+| **OAuth Client ID** | Handling user accounts, login, or authorization for the agent's end-users. | This method requires the agent to request and receive explicit consent from the end-user (e.g., "Allow Agent X to access your calendar"). |
+
+## Granting and revoking permissions
+
+Since authorization relies on the roles assigned to the agent's service account principal, managing access is done entirely through assigning or removing IAM roles. This process ensures the agent only has the necessary permissions.  
+
+You have two primary options for managing these assignments. You can use the Google Cloud console for one-off changes, but the gcloud Command Line Interface (CLI) is recommended for programmatic or bulk role management.
+
+# Deploying and managing AI Agents in production
+
+Successfully moving an AI Agent from a prototype to a production environment requires a robust, scalable, and secure infrastructure. This lesson explores Google Cloud's comprehensive offerings and tools to manage the full lifecycle of your agents, from initial deployment to continuous monitoring and scaling.  
+
+## Deployment and infrastructure
+
+The choice of hosting platform depends on your agent's complexity, language, and required level of management. 
+
+#### Agent Engine
+
+For agents built using the Agent Development Kit (ADK), Vertex AI Agent Engine provides the most streamlined, managed path to production through the following features:  
+
+- **Managed service:** This is a fully managed runtime environment specifically optimized for agent workloads. It handles infrastructure, scaling, and integrated memory/session management automatically.  
+- **Simplified deployment:** Developers can typically deploy their agents with a single Command Line Interface (CLI) action, significantly accelerating the path from development to live service.  
+- **Security and interoperability:** It natively supports standards like the Agent-to-Agent (A2A) protocol for secure collaboration between different agents and includes built-in security features.  
+
+Ultimately, these capabilities enable Gemini Enterprise to utilize Vertex AI Agent Engine as its managed runtime and governance layer, enabling organizations to securely deploy, scale, and manage all custom and pre-built AI agents for automated workflows.  
+
+#### Cloud Run
+
+For highly customized agents or those requiring a specific execution environment, Cloud Run is the recommended serverless container platform.  
+
+- **Flexibility:** It allows you to package your agent and all its dependencies into a container, offering maximum control over the runtime environment (including CPU/GPU allocation).  
+- **Autoscaling:** Cloud Run scales automatically and rapidly, often down to zero when not in use (pay-per-use pricing), making it highly cost-efficient for variable traffic.  
+- **Exposition:** Cloud Run is ideal for exposing agents via multiple mechanisms—as a web UI, a REST API endpoint, or through A2A communication.  
+
+#### Google Kubernetes Engine (GKE)
+
+GKE is a container orchestration platform that's ideal for running many instances of an AI agent simultaneously. GKE provides the necessary control and scaling for complex AI workloads:  
+
+- **Specialized hardware support:** GKE is designed for deploying sophisticated, high-performance AI agents and their underlying models. It's ideal for users who require maximum control, specialized hardware, and a production-grade orchestration ecosystem.  
+- **Full customization and orchestration:** GKE offers the entire Kubernetes feature set, giving you fine-grained control over networking, storage, security, and the distribution of complex, multi-component agent architectures.  
+- **Advanced scaling:** Beyond basic scaling, GKE provides AI-aware autoscaling features like the GKE Inference Gateway and custom Horizontal Pod Autoscalers (HPA). This allows for optimized resource use, lower tail latency, and high throughput for demanding, variable traffic loads.  
+- **Production Readiness:** GKE ensures production stability through integrated security, detailed observability, and compatibility with MLOps pipelines.  
+
+#### App Engine
+
+Agents built with the Conversational Agents platform are often deployed and hosted using App Engine for scalable, serverless backend processing.  
+
+- **Flexibility:** App Engine provides broad support for modern web service code. The service's runtime environment, including specifying the exact language version (e.g., go116 or Python 3.10), is easily defined in the app.yaml configuration file.  
+- **Autoscaling:** App Engine has reliable and robust automatic scaling which helps to manage traffic fluctuations without manual intervention.  
+- **Exposition:** The agent's user interface comes from Dialogflow Messenger. By embedding its code into a simple webpage, users can start interacting with the agent right away.  
+
+#### Compute Engine
+
+Compute Engine provides Infrastructure-as-a-Service (IaaS), offering highly customizable virtual machines (VMs). It represents the lowest level of abstraction among Google Cloud compute options, giving you the most control over the underlying environment.  
+
+- **Customization:** You can use Compute Engine when your AI agent has rigid, highly specific operating system, kernel, or networking requirements that cannot be met by managed services like Cloud Run or GKE.  
+- **Legacy workload support:** It is the ideal choice for migrating existing AI systems or legacy applications that require a specific OS or licensed software to run alongside the agent.  
+- **Persistent services:** Compute Engine VMs are well-suited for agents that are long-running, stateful, and require continuous, predictable resource allocation rather than the elastic, scale-to-zero nature of serverless platforms.  
+- **Management overhead:** The trade-off for the customization and control is full responsibility for managing the VM, including the operating system, patching, scaling, security, and networking configuration. It requires the highest operational overhead.  
+
+## Security and access control
+
+Production environments require strict control over who can access the agent, and what external systems the agent can interact with.  
+
+| Security focus              | Google Cloud tool/feature                 | Purpose in agent security                                                                                                                                                                                                 |
+|----------------------------|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Identity and authorization** | **Identity and Access Management (IAM)** | Ensures only authorized human users can interact with the agent (e.g., via a secured web UI) and grants the agent itself a service account with the minimum necessary permissions for its tools (principle of least privilege). |
+| **Data perimeter**         | **VPC Service Controls**                  | Creates a secure, impenetrable perimeter around sensitive Google Cloud resources (like data stores and vector databases) to prevent unauthorized movement of data, directly mitigating the risk of data exfiltration.     |
+| **Tool permissions**       | **Scoped credentials and service accounts** | The agent's identity is used to call external APIs, ensuring that its access to a database or a file system is always constrained to exactly what is needed for the task at hand.                                          |
+
+## Monitoring
+
+Observability is important for diagnosing performance bottlenecks, auditing security events, and tracking business value.  
+
+- **Logging:** Cloud Logging is used to capture comprehensive, structured logs of every agent interaction, tool invocation, and error. This supports the agent observability principle.  
+- **Tracing:** Cloud Trace helps visualize the end-to-end latency of a conversation, breaking down time spent in LLM calls, tool executions (webhooks), and memory retrieval, allowing you to quickly find and fix bottlenecks.  
+- **Metrics:** Cloud Monitoring tracks key operational metrics such as QPS (queries per second), error rates, and average latency.  
+- **Agent-specific metrics:** Platforms like Conversational Agents provide specialized analytics for AI performance, tracking metrics like escalation rates, conversation outcomes, and tool failure rates.  
+
+## Lifecycle management
+
+Agents are constantly evolving and a clear process for updates ensures reliability. 
+
+- **VERSIONING**
+  Use the built-in versioning capabilities of services like Vertex AI Agent Engine or Cloud Run to snapshot your agent's code, models, and configuration at stable points.
+  
+- **ENVIRONMENTS**
+  Deploy new agent versions to staging or test environments first, allowing your internal teams and red teams to validate behavior and security before pushing to production.
+  
+- **ROLLBACKS**
+  Maintain a quick, reliable path to roll back to a previously stable version in case a new deployment introduces unforeseen errors or security regressions. This is critical due to the non-deterministic nature of AI model behavior.
