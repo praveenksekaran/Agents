@@ -1,6 +1,12 @@
 # All Samples
 [git python agents](https://github.com/google/adk-samples/tree/main/python/agents)
 
+[Hackathon Projects](https://googlecloudmultiagents.devpost.com/project-gallery)
+
+[Agent Development Kit Git Home/ADK Refrence document](https://google.github.io/adk-docs/get-started/)
+
+[LLM Best Practices](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/learn/prompt-best-practices)
+
 # Sample from Google training
 
 #### Install ADK 
