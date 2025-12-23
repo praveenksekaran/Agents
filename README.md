@@ -16,6 +16,9 @@ Study of Agents
 
 [Understanding Multi-Agent Systems](https://github.com/praveenksekaran/Agents/blob/main/Docs/Understanding%20Multi-Agent%20System.pdf)
 
+# Design Patterns
+Learn from OpenAI design patterns. Google has many 
+[Google Design patterns](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
 
 #### How to build a software Agents 
 [12-factor-agents](https://github.com/humanlayer/12-factor-agents)
