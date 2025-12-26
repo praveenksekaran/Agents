@@ -70,6 +70,7 @@ cloudshell workspace ~
 
 ```
 gcloud storage cp -r gs://YOUR_GCP_PROJECT_ID-bucket/adk_tools .
+# gcloud storage cp -r gs://qwiklabs-gcp-04-d87ff3427052-bucket/adk_tools .
 ```
 
 10. Update your PATH environment variable, install ADK, and install some additional requirements for this lab by running the following commands in the Cloud Shell Terminal.
