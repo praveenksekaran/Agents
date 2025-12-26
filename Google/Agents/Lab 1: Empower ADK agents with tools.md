@@ -141,8 +141,8 @@ The LangChain community has created a [large number of tool integrations](https:
 cd ~/adk_tools
 cat << EOF > langchain_tool_agent/.env
 GOOGLE_GENAI_USE_VERTEXAI=TRUE
-GOOGLE_CLOUD_PROJECT=YOUR_GCP_PROJECT_ID
-GOOGLE_CLOUD_LOCATION=GCP_LOCATION
+GOOGLE_CLOUD_PROJECT=qwiklabs-gcp-04-d87ff3427052
+GOOGLE_CLOUD_LOCATION=us-central1
 MODEL=gemini-2.5-flash
 EOF
 ```
