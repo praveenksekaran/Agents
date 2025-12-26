@@ -76,7 +76,7 @@ gcloud storage cp -r gs://YOUR_GCP_PROJECT_ID-bucket/adk_tools .
 ```
 export PATH=$PATH:"/home/${USER}/.local/bin"
 python3 -m pip install google-adk[extensions] -r adk_tools/requirements.txt
-'''
+```
 
 **Note: google-adk[extensions] is used to install additional dependencies required for Crew AI tools.**
 
