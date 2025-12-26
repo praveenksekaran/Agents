@@ -447,7 +447,7 @@ When using a LongRunningFunctionTool, your Python function can initiate the long
 An example is a human-in-the-loop scenario where the agent needs human approval before proceeding with a task.
 
 #### Application Integration workflows as tools
-With Application Integration, you can use a drag-and-drop interface in the Google Cloud Console to build tools, data connections, and data transformations using Integration Connector’s 100+ pre-built connectors for Google Cloud products and third-party systems like Salesforce, ServiceNow, JIRA, SAP, and more. You can then use an ADK ApplicationIntegrationToolset to allow your agents to connect to those sources or call your workflows.
+With [Application Integration](https://docs.cloud.google.com/application-integration/docs/overview), you can use a drag-and-drop interface in the Google Cloud Console to build tools, data connections, and data transformations using Integration Connector’s 100+ pre-built connectors for Google Cloud products and third-party systems like Salesforce, ServiceNow, JIRA, SAP, and more. You can then use an ADK ApplicationIntegrationToolset to [allow your agents to connect to those sources or call your workflows.](https://google.github.io/adk-docs/tools/google-cloud/#application-integration-tools)
 
 
 #### Model Context Protocol (MCP) Tools
@@ -458,4 +458,4 @@ Refer to the MCP Tools documentation for code samples and design patterns that h
 - Using Existing MCP Servers within ADK: An ADK agent can act as an MCP client and use tools provided by external MCP servers.
 - Exposing ADK Tools via an MCP Server: How to build an MCP server that wraps ADK tools, making them accessible to any MCP client.
 
-For more information on using MCP with ADK agents, see the lab Use Model Context Protocol (MCP) Tools with ADK Agents.
+For more information on using MCP with ADK agents, see the [lab Use Model Context Protocol (MCP) Tools with ADK Agents](https://www.skills.google/catalog_lab/32353).
