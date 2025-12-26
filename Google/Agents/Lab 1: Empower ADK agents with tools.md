@@ -97,7 +97,7 @@ In a later task, you will use the Google-provided Vertex AI Search tool to groun
 6. Select Unstructured documents (PDF, HTML, TXT and more)
 
 7. Example documents have been uploaded to Cloud Storage for you. They relate to the fictional discovery of a new planet named Persephone. A fictional planet is used in this case so that the model cannot have learned anything about this planet during its training. 
-For a GCS path, enter YOUR_GCP_PROJECT_ID-bucket/planet-search-docs.
+For a GCS path, enter YOUR_GCP_PROJECT_ID-bucket/planet-search-docs. i.e. qwiklabs-gcp-04-d87ff3427052-bucket/planet-search-docs
 
 8. Click Continue.
 
