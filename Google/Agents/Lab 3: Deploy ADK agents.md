@@ -1,7 +1,5 @@
 # Deploy agents to Agent Engine
 
-#Agent Engine
-
 Vertex AI Agent Engine (formerly known as LangChain on Vertex AI or Vertex AI Reasoning Engine) is a fully managed Google Cloud service enabling developers to deploy, manage, and scale AI agents in production.
 
 You can learn more about its benefits in the [Vertex AI Agent Engine documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview).
