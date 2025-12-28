@@ -102,6 +102,16 @@ Some required arguments, like [--project](https://github.com/google/adk-python/b
 
 Answer the following questions based on the arguments for [adk deploy agent_engine](https://github.com/google/adk-python/blob/c52f9564330f0c00d82338cc58df28cb22400b6f/src/google/adk/cli/cli_tools_click.py#L1037)
 
+> The `--agent_engine_id` argument allows you to update an existing Agent Engine instance.
+> True
+
+> The `--trace_to_cloud` argument has a default value of True.
+> False
+
+> Which of the following is true about the `--adk_app` argument?
+> Accepts a filename to define an ADK app
+ 
+
 # Task 3. Get and query an agent deployed to Agent Engine
 To query the agent, you must first grant it the authorization to call models via Vertex AI.
 
@@ -120,7 +130,16 @@ To query the agent, you must first grant it the authorization to call models via
 7. Back in the Cloud Shell Editor, within the **adk_to_agent_engine** directory, open the file **query_agent_engine.py**.
 
 8. Review the code and comments to notice what it is doing.
+
+> What does the code in this file do? Select all that apply.
+> Establish a logging client
+> Initialize Vertex AI
+> Load Agent Engine apps, filtering by display name
+> Create a session
+> Query the summarizer agent
+
 9. Review the transcript passed to the agent, so that you can evaluate if it's generating an adequate summary.
+  
 10. In the Cloud Shell Terminal, run the file from the **adk_to_agent_engine** directory with:
   ```
   cd ~/adk_to_agent_engine/transcript_summarization_agent
