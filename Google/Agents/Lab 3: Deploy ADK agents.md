@@ -83,8 +83,7 @@ To deploy an Agent Engine app using adk deploy agent_engine, complete the follow
   ```
   
   You can follow the status from the log file that will be linked from the command's output. During deployment, the following steps are occurring:
-
-    1. A bundle of artifacts is generated locally, comprising:
+  1. A bundle of artifacts is generated locally, comprising:
      -  *.pkl: a pickle file corresponding to local_agent.
      -  [requirements.txt](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/deploy#package-requirements): this file from the agent folder defining package requirements.
      -  [dependencies.tar.gz](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/deploy#extra-packages): a tar file containing any extra packages.
