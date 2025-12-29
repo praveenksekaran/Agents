@@ -491,15 +491,6 @@ This action opens the service in a new browser tab with the message Hello World!
   export SECURE_API_URL="PASTE_SERVICE_URL_HERE"
   ```
 
-
- 
-
-
-
-
-
-
-
 Part 3: The AI Agent Layer
 --------------------------
 
@@ -524,8 +515,6 @@ Now, you can set up a proper development environment for the agent that securely
     ```
     pip install google-adk toolbox-core
     ```
-
-
 
 Task 8. Build the ADK agent
 ---------------------------
@@ -559,94 +548,66 @@ The output resembles the following:
     
     # Close the session
     ```
+### Update the agent definition
+Now you can create the script that defines your agent's properties and, crucially, links to the customer_data_tools toolset you defined in tools.yaml.
+
+1. Within the current working directory named my-adk-agent, copy the tool configuration file named tools.yaml that you previously created for the API layer into your agent's directory, so the ADK can discover it:
+    ```
+    cp ../tools.yaml .
+    ```
+2. Update the file named agent.py:
+    ```
+    cat << EOF > agent.py
+    ```
+    A new line appears for you to add code to the file.
+
+3. Copy and paste the following agent.py script, and then press Enter:
+    ```
+    from google.adk.agents import Agent
+    from toolbox_core import ToolboxSyncClient
+    
+    #Load all the tools
+    toolbox = ToolboxSyncClient(${SECURE_API_URL})
+    tools = toolbox.load_toolset('customer_data_tools')
+    
+    #Define the agent at the module level and assign it to root_agent
+    root_agent = Agent(
+        name='claims_assistant',
+        model='gemini-2.5-flash',
+        description= 'The Cymbal Claims Assistant is designed to help insurance adjusters at Cymbal Insurance find relevant articles or policies and find a specific policy or article by providing its unique ID.',
+        instruction= 'You are an insurance claims assistant specifically helping insurance adjusters at Cymbal Insurance. Your primary function is to quickly and accurately retrieve information from a database of insurance policies and related knowledge base articles. You streamline the claims process by allowing an adjuster to 1) perform semantic searches using natural language to find relevant articles or policies (e.g., "find procedures for mitigating water damage"); and 2) retrieve the exact details of a specific policy or article by providing its unique ID.',
+        tools=tools,
+    )
+    
+    #client_headers={"Authorization": f"Bearer {auth_token}"}
+    ```
+4. On the new line, type EOF and press Enter again to exit the editor, and return to the command line.
+
+
+
+
+
 Task 9. Run and test your agent
 -------------------------------
+You are now ready to run the agent and interact with your secure, three-tier architecture using the ADK's local web UI. Your current working directory named my-adk-agent directory now contains the tools.yaml file and the multi-tool-agent subdirectory with the updated agent.py.
 
-In this task, you start the ADK agent and test its ability to answer questions by calling the secure database API.
+  > my-adk-agent/
+  > ├── multi_tool_agent/
+  > │   ├── __init__.py
+  > │   ├── agent.py
+  > │   └── .env
+  > └── tools.yaml
 
-### Start the agent
+1. Within the current working directory named my-adk-agent, run the following command to launch the ADK Web UI:
+```
+adk web
 
-*   1.
+# select multi_tool_agent
 
-    Ensure the virtual environment is active.
+# ask the agent questions like, "Find articles about roof damage from storms."
 
-source venv/bin/activate
+```
 
-Copy
-
-*   2.
-
-    Run the agent.
-
-python agent_main.py
-
-Copy
-
-The agent starts and waits for your input.
-
-### Ask test questions
-
-*   1.
-
-    Type natural language questions that require both structured and unstructured data, for example:
-
-    *   •  
-        What coverage does customer CUST-84321 have for water damage?
-    *   •  
-        How should an adjuster handle hail damage to a roof under this policy?
-    *   •  
-        Explain the principle of indemnity as it applies to this customer’s claim.
-    *   •  
-        What should I do first when I see water damage in a kitchen?
-
-*   2.
-
-    Observe how the agent:
-
-    *   •  
-        Calls the secure API
-    *   •  
-        Uses semantic search over the AlloyDB vectors
-    *   •  
-        Combines policy details and knowledge base articles to generate an answer
-
-### Verify secure access
-
-*   1.
-
-    In the Cloud Run logs, confirm that:
-
-    *   •  
-        Requests are coming from the expected service account
-    *   •  
-        Only the defined endpoints are being called
-
-*   2.
-
-    In the AlloyDB logs, verify that:
-
-    *   •  
-        All database access occurs through the Cloud Run service
-    *   •  
-        There are no direct connections from the agent to the database
-
-Congratulations!
-----------------
-
-You have completed this lab.
-
-You built an enterprise-ready three-tier architecture for secure AI-powered access to production data:
-
-*   •  
-    Configured AlloyDB for vector search, created a table, and stored embeddings.
-*   •  
-    Built and deployed a secure MCP Toolbox API on Cloud Run that exposes controlled database tools.
-*   •  
-    Created an ADK-based agent that authenticates to the API and uses it to answer natural language questions for an insurance adjuster scenario.
-
-Click **End Lab** in Google Skills to finalize your progress and free the resources.
-
-[1](https://www.skills.google/paths/3273/course_templates/1436/labs/586353)
 
 
 [1](https://www.skills.google/paths/3273/course_templates/1436/labs/586353)
