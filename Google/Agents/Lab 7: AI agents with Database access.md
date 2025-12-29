@@ -246,7 +246,6 @@ This query uses the values in the **abstract_embeddings** column to find the top
 
 The output resembles the following:
 
-|   |   |  |
 |---|---|---|
 | id | title | abstract |
 | ART-10326507 | Standard Procedure for Mitigating Water Damage | This article details the standard procedure for mitigating residential water damage... |
@@ -533,10 +532,10 @@ In this task, you use adk to create the initial structure and files for your age
 6. When prompted to enter a Google Cloud region, enter:
 
 The output resembles the following:
-    > Agent created /home/student_04_abe4bdb38f4f/mcp-toolbox/my-adk-agent/multi_tool_agent:
-    >  - .env
-    >  - __init__.py
-    >  - agent.py
+>Agent created /home/student_04_abe4bdb38f4f/mcp-toolbox/my-adk-agent/multi_tool_agent:
+>  - .env
+>  - __init__.py
+>  - agent.py
 
 ### Test the simple agent
     ```
@@ -583,30 +582,26 @@ Now you can create the script that defines your agent's properties and, cruciall
     ```
 4. On the new line, type EOF and press Enter again to exit the editor, and return to the command line.
 
-
-
-
-
 Task 9. Run and test your agent
 -------------------------------
 You are now ready to run the agent and interact with your secure, three-tier architecture using the ADK's local web UI. Your current working directory named my-adk-agent directory now contains the tools.yaml file and the multi-tool-agent subdirectory with the updated agent.py.
 
-  > my-adk-agent/
-  > ├── multi_tool_agent/
-  > │   ├── __init__.py
-  > │   ├── agent.py
-  > │   └── .env
-  > └── tools.yaml
+>my-adk-agent/
+> - ├── multi_tool_agent/
+> - │   ├── __init__.py
+> - │   ├── agent.py
+> - │   └── .env
+> - └── tools.yaml
 
 1. Within the current working directory named my-adk-agent, run the following command to launch the ADK Web UI:
-```
-adk web
-
-# select multi_tool_agent
-
-# ask the agent questions like, "Find articles about roof damage from storms."
-
-```
+    ```
+    adk web
+    
+    # select multi_tool_agent
+    
+    # ask the agent questions like, "Find articles about roof damage from storms."
+    
+    ```
 
 
 
