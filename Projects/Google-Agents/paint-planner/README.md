@@ -15,7 +15,8 @@ cloudshell workspace ~
 
 cd ~/paint-planner/paint-agent-service
 export PATH=$PATH:"/home/${USER}/.local/bin"
-python3 -m pip install "google-adk==1.16.0" -r requirements.txt
+python3 -m pip install "google-adk==1.16.0"
+python3 pip install -r requirements.txt
 
 ```
 
