@@ -24,7 +24,7 @@ python3 pip install -r requirements.txt
 cd ~/paint-planner/paint-agent-service
 cat << EOF > .env
 GOOGLE_GENAI_USE_VERTEXAI=TRUE
-GOOGLE_CLOUD_PROJECT=just-shell-483813-g3
+GOOGLE_CLOUD_PROJECT=[Your Project ID]
 GOOGLE_CLOUD_LOCATION=us-central1
 RESOURCES_BUCKET=paint-planner-bucket
 MODEL=gemini-2.5-flash
@@ -64,7 +64,7 @@ adk deploy agent_engine paint_agent \
 >>Writing to gs://paint-planner-bucket/agent_engine/dependencies.tar.gz
 
 # Vertex URL is returned 
-vertexai.agent_engines.get('projects/568597685542/locations/us-central1/reasoningEngines/7547273212938158080')
+vertexai.agent_engines.get('[Vertex Engine Resource name]')
 ```
 
 #### To query the agent, you must first grant it the authorization to call models via Vertex AI
