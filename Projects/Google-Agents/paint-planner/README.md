@@ -74,4 +74,7 @@ vertexai.agent_engines.get('projects/568597685542/locations/us-central1/reasonin
 5. In the `Select a role` field, enter `Vertex AI User`. If you deploy an agent that uses tools to access other data, you would grant access to those systems to this service agent as well.
 6. Save
 
-#### 
+#### Test vertext deployment 
+```
+python3 test_vertex_deployment.py
+```
