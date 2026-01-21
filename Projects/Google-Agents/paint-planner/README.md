@@ -4,12 +4,17 @@
 # Project introdcution
 Shop for paint for DIY home renovation projects.
 
-- select a paint product based on Cymbal Sheets' paint product datasheets
-- choose a color from the selected product line
-- determine how much paint is needed by rooms' dimensions
-- calculate the price based on the selected options
+Paint-shop-UI:
+- Visually create a floor plan of the house
+- add floor, rooms, doors and windows
+- select color for each wall
 
-# Commands 
+Paint Service Agent 
+- Start on UI start, to welcome the user 
+- on 'Submit', take the dimensions and plan
+- sub agents for calculations 
+
+# Multiagent build and Deploy
 ```
 cloudshell workspace ~
 
@@ -39,7 +44,7 @@ cp .env paint_agent/.env
 adk web --reload
 
 ```
-# Deploy on Vertext engine
+## Deploy on Vertext engine
 
 #### Run the below command
 ```
@@ -67,7 +72,7 @@ adk deploy agent_engine paint_agent \
 vertexai.agent_engines.get('[Vertex Engine Resource name]')
 ```
 
-#### To query the agent, you must first grant it the authorization to call models via Vertex AI
+## To query the agent, you must first grant it the authorization to call models via Vertex AI
 1. navigate to IAM in the console
 2. Click the checkbox to Include Google-provided role grants
 3. Find the AI Platform Reasoning Engine Service Agent (service-PROJECT_NUMBER@gcp-sa-aiplatform-re.iam.gserviceaccount.com), and click the edit pencil icon in this service agent's row.
@@ -75,7 +80,19 @@ vertexai.agent_engines.get('[Vertex Engine Resource name]')
 5. In the `Select a role` field, enter `Vertex AI User`. If you deploy an agent that uses tools to access other data, you would grant access to those systems to this service agent as well.
 6. Save
 
-#### Test vertext deployment 
+## Test vertext deployment 
 ```
 python3 test_vertex_deployment.py
+```
+
+# UI build
+
+1. Update primary configuration next.config.ts file and app/services/vertex.ts:17 - Fallback default URL with Vertext AI URL
+
+```
+cd paint-planner/paint-shop-UI
+
+npm run build
+npm run dev
+
 ```
