@@ -189,7 +189,7 @@ Note: If you are deploying a pure React SPA, you typically need a simple server 
 ---
 
 4. Build and Run
-    Build using Bash
+    Build using Bash on windows
    ```
    npm run build
    npm start
@@ -216,15 +216,14 @@ gcloud run deploy paint-shop-ui --source . --region us-central1 --allow-unauthen
 
 ---
 
-### 4. Post-Deployment Configuration (TODO)
+### 4. Post-Deployment Configuration
 
 Once deployed, you may need to manage secrets or environment variables.
 
 #### Adding Environment Variables
 
 ```bash
-gcloud run services update paint-shop-ui \
-    --update-env-vars NODE_ENV=production,API_KEY=12345
+gcloud run services update paint-shop-ui --update-env-vars Agent_Query_URL=https://.../reasoningEngines/3947806395134377984
 
 ```
 
