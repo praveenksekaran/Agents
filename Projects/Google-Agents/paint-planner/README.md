@@ -188,17 +188,23 @@ Note: If you are deploying a pure React SPA, you typically need a simple server 
    (Optional, as start does not include Serve)
 ---
 
+4. Build and Run
+    Build using Bash
+   ```
+   npm run build
+   npm start
+   ```
+
 ### 3. Deploying to Cloud Run
 
 The `gcloud run deploy` command will now zip your source, send it to Cloud Build, create a container image in Artifact Registry, and deploy it to a service.
 
+[Deploy from source option](https://docs.cloud.google.com/run/docs/deploying). other options include deploy using container image and deploy using Git etc.
+
 #### The Deployment Command
 
 ```bash
-gcloud run deploy my-nodejs-app \
-    --source . \
-    --region us-central1 \
-    --allow-unauthenticated
+gcloud run deploy paint-shop-ui --source . --region us-central1 --allow-unauthenticated
 
 ```
 
@@ -210,14 +216,14 @@ gcloud run deploy my-nodejs-app \
 
 ---
 
-### 4. Post-Deployment Configuration
+### 4. Post-Deployment Configuration (TODO)
 
 Once deployed, you may need to manage secrets or environment variables.
 
 #### Adding Environment Variables
 
 ```bash
-gcloud run services update my-nodejs-app \
+gcloud run services update paint-shop-ui \
     --update-env-vars NODE_ENV=production,API_KEY=12345
 
 ```
@@ -227,7 +233,7 @@ gcloud run services update my-nodejs-app \
 If you didn't use `--allow-unauthenticated`, you must manually grant access to specific users:
 
 ```bash
-gcloud run services add-iam-policy-binding my-nodejs-app \
+gcloud run services add-iam-policy-binding paint-shop-ui \
     --member="user:collaborator@gmail.com" \
     --role="roles/run.invoker" \
     --region us-central1
@@ -238,13 +244,11 @@ gcloud run services add-iam-policy-binding my-nodejs-app \
 
 ### 5. Verification
 
-After the command completes, you will receive a **Service URL** (e.g., `https://my-nodejs-app-xyz.a.run.app`).
+After the command completes, you will receive a **Service URL** (e.g., `https://paint-shop-ui-xyz.a.run.app`).
 
 To check the status of your service at any time:
 
 ```bash
-gcloud run services describe my-nodejs-app --region us-central1
+gcloud run services describe paint-shop-ui --region us-central1
 
 ```
-
-Would you like me to show you how to set up a **Cloud Build Trigger** so that your app redeploys automatically every time you push code to GitHub?
