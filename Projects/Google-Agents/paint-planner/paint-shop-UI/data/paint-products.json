@@ -1,0 +1,162 @@
+[
+  {
+    "id": "p001",
+    "brand": "Dulux",
+    "name": "Weathershield",
+    "color": "Pure Brilliant White",
+    "description": "Premium quality white paint with excellent coverage and durability",
+    "pricePerLiter": 28.99,
+    "coveragePerLiter": 130,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23FFFFFF' stroke='%23CCCCCC' stroke-width='2'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p002",
+    "brand": "Dulux",
+    "name": "Weathershield",
+    "color": "Soft Linen",
+    "description": "Warm neutral beige tone perfect for living spaces",
+    "pricePerLiter": 28.99,
+    "coveragePerLiter": 130,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23F5F0E8'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p003",
+    "brand": "Benjamin Moore",
+    "name": "Regal Select",
+    "color": "Simply White",
+    "description": "Classic white with subtle warmth, perfect for any room",
+    "pricePerLiter": 32.50,
+    "coveragePerLiter": 135,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23FAF9F5' stroke='%23CCCCCC' stroke-width='2'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p004",
+    "brand": "Benjamin Moore",
+    "name": "Regal Select",
+    "color": "Gray Owl",
+    "description": "Soft, versatile gray that works in any lighting",
+    "pricePerLiter": 32.50,
+    "coveragePerLiter": 135,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23E1E2DE'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p005",
+    "brand": "Sherwin Williams",
+    "name": "Duration Home",
+    "color": "Alabaster",
+    "description": "Warm white with a touch of beige, ideal for interiors",
+    "pricePerLiter": 35.00,
+    "coveragePerLiter": 140,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23EDEBE8' stroke='%23CCCCCC' stroke-width='2'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p006",
+    "brand": "Sherwin Williams",
+    "name": "Duration Home",
+    "color": "Naval",
+    "description": "Deep, sophisticated navy blue for accent walls",
+    "pricePerLiter": 35.00,
+    "coveragePerLiter": 135,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23001F3F'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p007",
+    "brand": "Behr",
+    "name": "Premium Plus",
+    "color": "Swiss Coffee",
+    "description": "Creamy off-white with excellent hiding power",
+    "pricePerLiter": 24.99,
+    "coveragePerLiter": 125,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23F7F3E9'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p008",
+    "brand": "Behr",
+    "name": "Premium Plus",
+    "color": "Dolphin Fin",
+    "description": "Modern gray with cool undertones",
+    "pricePerLiter": 24.99,
+    "coveragePerLiter": 125,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23D5D5D5'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p009",
+    "brand": "Farrow & Ball",
+    "name": "Estate Emulsion",
+    "color": "Cornforth White",
+    "description": "Sophisticated neutral white-gray blend",
+    "pricePerLiter": 45.00,
+    "coveragePerLiter": 145,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23E8E6E2'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p010",
+    "brand": "Farrow & Ball",
+    "name": "Estate Emulsion",
+    "color": "Hague Blue",
+    "description": "Rich, deep blue with black undertones",
+    "pricePerLiter": 45.00,
+    "coveragePerLiter": 140,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23152E48'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p011",
+    "brand": "Valspar",
+    "name": "Signature",
+    "color": "Tempered Gray",
+    "description": "Balanced gray perfect for modern homes",
+    "pricePerLiter": 26.50,
+    "coveragePerLiter": 128,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23DCDCDC'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p012",
+    "brand": "Valspar",
+    "name": "Signature",
+    "color": "Autumn Fog",
+    "description": "Warm taupe with subtle gray undertones",
+    "pricePerLiter": 26.50,
+    "coveragePerLiter": 128,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23D9D0C5'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p013",
+    "brand": "PPG",
+    "name": "Timeless",
+    "color": "Delicate White",
+    "description": "Pure white with excellent coverage",
+    "pricePerLiter": 27.99,
+    "coveragePerLiter": 132,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23FEFEFE' stroke='%23CCCCCC' stroke-width='2'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p014",
+    "brand": "PPG",
+    "name": "Timeless",
+    "color": "Silver Strand",
+    "description": "Soft silvery blue-gray blend",
+    "pricePerLiter": 27.99,
+    "coveragePerLiter": 132,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23D4D9D7'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p015",
+    "brand": "Glidden",
+    "name": "Premium",
+    "color": "Soft Ivory",
+    "description": "Budget-friendly warm white",
+    "pricePerLiter": 19.99,
+    "coveragePerLiter": 120,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23FFF8E7'/%3E%3C/svg%3E"
+  },
+  {
+    "id": "p016",
+    "brand": "Glidden",
+    "name": "Premium",
+    "color": "Stone Harbor",
+    "description": "Gentle greige with versatile appeal",
+    "pricePerLiter": 19.99,
+    "coveragePerLiter": 120,
+    "thumbnailUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23E5DED6'/%3E%3C/svg%3E"
+  }
+]

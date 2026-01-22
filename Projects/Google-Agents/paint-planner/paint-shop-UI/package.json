@@ -1,0 +1,31 @@
+{
+  "name": "paint-planner",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "cp -r .next/static .next/standalone/.next/static && cp -r public .next/standalone/public",
+    "start": "node .next/standalone/server.js",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "google-auth-library": "^10.5.0",
+    "konva": "^10.0.12",
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-konva": "^19.2.1",
+    "serve": "^14.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
