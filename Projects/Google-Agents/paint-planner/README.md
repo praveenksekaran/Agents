@@ -110,11 +110,28 @@ This guide uses the **Source-to-Service** method, which is the modern standard (
 To deploy, your identity (User or Service Account) needs specific permissions.
 
 #### Required IAM Roles
+IN IAM --> Grant access 
+Add Principals --> your_user_account@gmail.com
+Assign the following roles :
 
-* **Cloud Run Admin** (`roles/run.admin`): Full control over Cloud Run resources.
-* **Artifact Registry Administrator** (`roles/artifactregistry.admin`): To create and manage the container repository.
-* **Cloud Build Editor** (`roles/cloudbuild.builds.editor`): To package your Node.js code into a container.
-* **Service Account User** (`roles/iam.serviceAccountUser`): Required to deploy the service as the runtime service account.
+* **Cloud Run Admin** (roles/run.admin): Full control over Cloud Run resources.
+* **Artifact Registry Repository Administrator** (roles/artifactregistry.admin): To create and manage the container repository.
+* **Cloud Build Editor** (roles/cloudbuild.builds.editor): To package your Node.js code into a container.
+* **Service Account User** (roles/iam.serviceAccountUser): Required to deploy the service as the runtime service account.
+* **Service Usage Admin**
+* **Cloud Run Source Developer** (roles/run.sourceDeveloper)
+
+Using CLI
+```
+    # Variables
+    PROJECT_ID=$(gcloud config get-value project)
+    USER_EMAIL=$(gcloud auth list --filter=status:ACTIVE --format='value(account)')
+    
+    # Grant permissions to yourself/developer
+    gcloud projects add-iam-policy-binding $PROJECT_ID \
+        --member="user:$USER_EMAIL" \
+        --role="roles/run.sourceDeveloper"
+```
 
 #### CLI Initialization
 
@@ -122,45 +139,53 @@ To deploy, your identity (User or Service Account) needs specific permissions.
 # Login to your Google account
 gcloud auth login
 
+# Verify account is active
+gcloud auth list
+
 # Set your active project
 gcloud config set project YOUR_PROJECT_ID
 
+#Verify Project configuration
+gcloud config list project
+#If asked for enabling cloudresourcemanager.googleapis.com say 'yes'
+
 # Enable required APIs
-gcloud services enable \
-    run.googleapis.com \
-    config.googleapis.com \
-    artifactregistry.googleapis.com \
-    cloudbuild.googleapis.com
+gcloud services enable run.googleapis.com --project=YOUR_PROJECT_ID
+gcloud services enable config.googleapis.com
+gcloud services enable artifactregistry.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
 
 ```
 
 ---
 
-### 2. Prepare Your Node.js App
+### 2. Project Configuration (Skip if you are downloading from GIT)
 
-Cloud Run expects your app to follow two simple rules:
+1. create a minimal production build. Update your next.config.js
+   ```
+   # add inside nextConfig    
+      output: 'standalone', // This creates a minimal 'server.js' for production  
+   ```
+2. in package.json add postbuild and start attributes Next.js.
+   ```
+       "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "postbuild": "cp -r .next/static .next/standalone/.next/static && cp -r public .next/standalone/public",
+        "start": "node .next/standalone/server.js",
+        "lint": "eslint"
+         }
+   ```
+Note: If you are deploying a pure React SPA, you typically need a simple server (like serve) or a Dockerfile with Nginx to host the static files. However, the easiest "no-config" way is to add a start script to package.json
+   ```
+    "scripts": {
+      "build": "vite build",
+      "start": "serve -s dist -l $PORT"
+    }
 
-1. **Listen on the `PORT` environment variable:** Cloud Run injects this (usually `8080`).
-2. **A `start` script in `package.json`:** Buildpacks use this to run your app.
-
-**Example `index.js`:**
-
-```javascript
-const express = require('express');
-const app = express();
-
-app.get('/', (req, res) => {
-  res.send('Hello from Node.js on Cloud Run!');
-});
-
-// IMPORTANT: Use process.env.PORT
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
-```
-
+   ```
+3.  add npm install serve to your dependencies.
+   (Optional, as start does not include Serve)
 ---
 
 ### 3. Deploying to Cloud Run
