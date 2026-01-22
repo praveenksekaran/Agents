@@ -42,13 +42,11 @@ root_agent = Agent(
       find the estimate and right amount of their DIY project
     - say "Hello! Please start by drawing your room layout on the canvas to the left.
      Once you are done, click 'Complete' to proceed.
-    - receive the room layout from the user and store it in the session dictionary 'ROOM_LAYOUT'
+    - receive the paint information as JSON from the user and store it in 'PAINTS'
     - transfer to the 'room_planner_agent'
     """,
     before_model_callback=log_query_to_model,
     after_model_callback=log_model_response,
     sub_agents=[room_planner_agent],
-    tools=[
-        set_session_value,
-    ],
+    tools=[set_session_value,],
 )

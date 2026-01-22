@@ -8,3 +8,7 @@ load_dotenv()
 def set_session_value(tool_context: ToolContext, key: str, value: str):
     tool_context.state[key] = value
     return {"key": key, "value": value}
+
+def get_session_value(tool_context: ToolContext, key: str):    
+    return tool_context.state.get(key)
+
